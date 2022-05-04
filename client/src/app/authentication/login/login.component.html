@@ -1,0 +1,38 @@
+<div class="loginContainer">
+  <div class="hospitalName">Hospital Name</div>  
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="loginForm">
+    <div class="userId">
+        
+            <label class="loginLabel">Username</label><br/>
+            <input class="user-id login-field" formControlName="userId" matInput>
+            <p class="error-msg" *ngIf="isSubmitted && formControls['userId'].errors?.['required']">* Please Enter Your User Id</p>
+    </div>
+
+    <div class="orgId">
+        <label class="loginLabel">Organization Id</label><br/> 
+        <input class="login-field" formControlName="orgId" matInput>
+        <p class="error-msg" *ngIf="isSubmitted && formControls['orgId'].errors">* Please Enter Your Organization Id</p>
+
+        
+    </div>
+    <div class="password">
+        <label class="loginLabel">Password</label><br/>
+        <input type='password' class="login-field" formControlName="password" matInput>
+        <p class="error-msg" *ngIf="isSubmitted && formControls['password'].errors">* Please Enter Your Password</p>
+    </div> 
+    <div>
+        <div class="forgot-username forgot-label">
+            Forgot Username
+        </div>
+        <div class="forgot-password forgot-label">
+            Forgot Password
+        </div>
+    </div>
+    <div class="loginButton">
+        <button mat-raised-button color="primary">Login</button>
+    </div>
+    
+  </div>
+</form>
+</div>
