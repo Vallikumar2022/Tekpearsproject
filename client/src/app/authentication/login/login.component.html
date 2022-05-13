@@ -5,27 +5,24 @@
     <div class="userId">
         
             <label class="loginLabel">Username</label><br/>
-            <input class="user-id login-field" formControlName="userId" matInput>
+            <input class="user-id login-field" formControlName="userId" placeholder="" matInput>
             <p class="error-msg" *ngIf="isSubmitted && formControls['userId'].errors?.['required']">* Please Enter Your User Id</p>
-    </div>
-
-    <div class="orgId">
-        <label class="loginLabel">Organization Id</label><br/> 
-        <input class="login-field" formControlName="orgId" matInput>
-        <p class="error-msg" *ngIf="isSubmitted && formControls['orgId'].errors">* Please Enter Your Organization Id</p>
-
-        
     </div>
     <div class="password">
         <label class="loginLabel">Password</label><br/>
         <input type='password' class="login-field" formControlName="password" matInput>
         <p class="error-msg" *ngIf="isSubmitted && formControls['password'].errors">* Please Enter Your Password</p>
     </div> 
+    <div class="orgId">
+        <label class="loginLabel">Organization Id</label><br/> 
+        <input class="login-field" formControlName="orgId" matInput>
+        <p class="error-msg" *ngIf="isSubmitted && formControls['orgId'].errors">* Please Enter Your Organization Id</p>    
+    </div>
     <div>
-        <div class="forgot-username forgot-label">
+        <div class="forgot-username forgot-label" (click)="openForgotUsernameDialog()">
             Forgot Username
         </div>
-        <div class="forgot-password forgot-label">
+        <div class="forgot-password forgot-label" (click)="openForgotPasswordDialog()">
             Forgot Password
         </div>
     </div>

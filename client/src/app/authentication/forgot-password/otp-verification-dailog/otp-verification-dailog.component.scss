@@ -1,4 +1,4 @@
-.forgot-password-container, .forgot-username-container{
+.otp-verification-container, .forgot-username-container{
     padding: 60px 80px 60px 80px;
 }
 
@@ -6,7 +6,7 @@
     font-weight: 100;
 }
 
-.fp-title, .fuTitle{
+.otp-title, .fp-title, .fuTitle{
     // text-align: center;
     font-size: 30px;
 }
@@ -62,4 +62,11 @@
     width: 100%;
 }
 
-// #4CAF50!important
+span.resend-otp-link {
+    margin-left: 14px;
+    font-weight: bold;
+    color: green;
+    cursor: pointer;
+}
+
+

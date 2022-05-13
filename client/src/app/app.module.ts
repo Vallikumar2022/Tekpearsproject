@@ -8,7 +8,7 @@ import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './common/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     AuthenticationModule,
     SharedModule,
+    FormsModule
     
   ],
   providers: [],

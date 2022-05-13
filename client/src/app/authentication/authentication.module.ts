@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AppMaterialModule } from '../common/angular-materail/app.material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OtpVerificationDailogComponent } from './forgot-password/otp-verification-dailog/otp-verification-dailog.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    OtpVerificationDailogComponent
   ],
   imports: [
     CommonModule,
     AppMaterialModule, 
     ReactiveFormsModule,
+    FormsModule
 ]
 
 

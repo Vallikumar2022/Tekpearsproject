@@ -3,3 +3,27 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.login-field{
+    width: 55%;
+    border: 1px solid grey;
+    border-radius: 25px;
+    padding: 15px 0px 15px 18px;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .label-color{
+      color: #1f5c99;
+  }
+
+//   ::ng-deep{
+//     .mat-raised-button.mat-primary{
+//         background-color: #1f5c99;
+//         margin-top: 1em;
+//         line-height: 36px;
+//         border-radius: 25px;
+
+//     }
+//   }
