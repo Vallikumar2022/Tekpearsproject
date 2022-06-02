@@ -1,0 +1,6 @@
+<mat-card class="cards-list" *ngFor="let card of cardsList" (click)="openRegistrationFormDialog()" [ngClass]="card.isClickable === true ? 'clickable' : 'not-clickable'">
+  <i [ngClass]="card.icon" class="card-icon"></i>  
+  <mat-card-title>{{card.title}}</mat-card-title>
+  <mat-card-subtitle>{{card.count}}</mat-card-subtitle>
+  <i *ngIf="card.isClickable === true" [ngClass]="card.icon2" class="card-icon-new"></i>  
+</mat-card>

@@ -10,6 +10,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './common/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MainModule } from './main/main.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     AuthenticationModule,
     SharedModule,
-    FormsModule
-    
+    FormsModule,
+    MainModule
   ],
   providers: [],
   bootstrap: [AppComponent],

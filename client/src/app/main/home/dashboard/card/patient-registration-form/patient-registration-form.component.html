@@ -1,0 +1,183 @@
+<div class="patient-registration-form">
+    <h1 mat-dialog-title class="prf-title  label-color">Patient Information</h1>
+
+    <div class="form reg-container">
+
+        <div class="">
+            <label class="reg-label">Patient Name: </label>
+            <input class="user-id login-field reg-field" placeholder="Patient Name" matInput>
+        </div>
+        <div class="">
+            <label class="reg-label">Email ID: </label>
+            <input class="user-id login-field reg-field" placeholder="Email Address" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Phone Number: </label>
+            <input class="user-id login-field reg-field" placeholder="Phone Number" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Age: </label>
+            <input class="user-id login-field reg-field"  placeholder="Age" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Sex: </label>
+            <input class="user-id login-field reg-field"  placeholder="Sex" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Location: </label>
+            <input class="user-id login-field reg-field" placeholder="Location" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Speciality: </label>
+            <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Select Speciality" disableOptionCentering>
+                <mat-option *ngFor="let type of speciality" [value]="type.value">
+                {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Consulted Doctor: </label>
+            <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Consulted Doctor" disableOptionCentering>
+                <mat-option *ngFor="let name of doctorsList" [value]="name.value">
+                {{name.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Type of Consultation: </label>
+            <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Type of Consultation" disableOptionCentering>
+                <mat-option *ngFor="let type of typeOfconsultation" [value]="type.value">
+                {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Date of Consultation:</label>
+            <input class="user-id login-field reg-field"  placeholder="Date of Consultation" matInput>
+        </div>
+
+        <div class="">         
+            <label class="reg-label">Purpose of Visit: </label>
+             <input class="user-id login-field reg-field" placeholder="Purpose of Visit" matInput>
+        
+        </div>
+
+        <div class="">
+            <label class="reg-label">Consultation Fee: </label>
+            <input class="user-id login-field reg-field" value="1000" [disabled]="true" placeholder="Consultation Fee" matInput>
+        </div>
+
+
+
+
+
+        <!-- <div class="userId"> -->
+        
+            <!-- <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Patient Name: </label>
+                    <input class="user-id login-field reg-field" placeholder="Patient Name" matInput>
+                </div>
+                <div class="col-6">
+                    <label class="reg-label">Speciality: </label>
+                    <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Select Speciality" disableOptionCentering>
+                        <mat-option *ngFor="let type of speciality" [value]="type.value">
+                        {{type.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Age: </label>
+                    <input class="user-id login-field reg-field"  placeholder="Age" matInput>
+                </div>
+                <div class="col-6">
+                    <label class="reg-label">Consulted Doctor: </label>
+                    <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Consulted Doctor" disableOptionCentering>
+                        <mat-option *ngFor="let name of doctorsList" [value]="name.value">
+                        {{name.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Sex: </label>
+                    <input class="user-id login-field reg-field"  placeholder="Sex" matInput>
+                </div>
+                <div class="col-6">
+                    <label class="reg-label">Type of Consultation: </label>
+                    <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Type of Consultation" disableOptionCentering>
+                        <mat-option *ngFor="let type of typeOfconsultation" [value]="type.value">
+                        {{type.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </div>
+
+
+            </div>
+
+            
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Location: </label>
+                    <input class="user-id login-field reg-field" placeholder="Location" matInput>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Email Address: </label>
+                    <input class="user-id login-field reg-field" placeholder="Email Address" matInput>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Phone Number: </label>
+                    <input class="user-id login-field reg-field" placeholder="Phone Number" matInput>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    
+                        <label class="reg-label">Purpose of Visit: </label>
+                         <input class="user-id login-field reg-field" placeholder="Purpose of Visit" matInput>
+                    
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Date of Consultation:</label>
+                    <input class="user-id login-field reg-field"  placeholder="Date of Consultation" matInput>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label class="reg-label">Consultation Fee: </label>
+                    <input class="user-id login-field reg-field" value="1000" [disabled]="true" placeholder="Consultation Fee" matInput>
+                </div>
+            </div>             -->
+    <div class="loginButton">
+        <button mat-raised-button color="primary" class="reg-patient-btn" (click)="submitPatientDetails()">Register Patient Details</button>
+    </div>
+            
+
+    </div>
+</div>

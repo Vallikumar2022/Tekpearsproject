@@ -1,0 +1,96 @@
+<div class="dashboard-container">
+    <app-card></app-card>
+
+    <div class="table-filter">
+      <label class="table-filter-label">Speciality: </label>
+      <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Select Speciality" disableOptionCentering (selectionChange)="applyFilter($event)">
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select>
+
+      <label class="table-filter-label">Type Of Consultation: </label>
+      <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Type Of Consultation" disableOptionCentering (selectionChange)="applyFilter($event)">
+        <mat-option *ngFor="let type of typeOfconsultation" [value]="type.value">
+          {{type.viewValue}}
+        </mat-option>
+      </mat-select>
+
+      <label class="table-filter-label">Status: </label>
+      <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Status" disableOptionCentering (selectionChange)="applyFilter($event)">
+        <mat-option *ngFor="let food of status" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select>
+
+      <label class="table-filter-label">Search: </label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" class="table-search" #input>
+    </div>
+    
+    <!-- Table data  -->
+
+    <div class="mat-elevation-z8 patients-list">
+        <table mat-table [dataSource]="dataSource">
+      
+          <ng-container matColumnDef="position" sticky>
+            <th mat-header-cell *matHeaderCellDef> Sl. No </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="name" sticky>
+            <th mat-header-cell *matHeaderCellDef> Patient Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="pId" sticky>
+            <th mat-header-cell *matHeaderCellDef> Patient ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.pId}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="pNumber" sticky>
+            <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.pNumber}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="speciality" sticky>
+            <th mat-header-cell *matHeaderCellDef> Speciality </th>
+            <td mat-cell *matCellDef="let element"> {{element.speciality}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="consultedDoctor" sticky>
+            <th mat-header-cell *matHeaderCellDef> Consulted Doctor </th>
+            <td mat-cell *matCellDef="let element"> {{element.consultedDoctor}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="typeOfConsultation" sticky>
+            <th mat-header-cell *matHeaderCellDef> Type of Consultation  </th>
+            <td mat-cell *matCellDef="let element"> {{element.typeOfConsultation}} </td>
+          </ng-container>
+          <ng-container matColumnDef="dateOfAppointment" sticky>
+            <th mat-header-cell *matHeaderCellDef> Date of Appointment  </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateOfAppointment}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status" sticky>
+            <th mat-header-cell *matHeaderCellDef> Status  </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action" sticky>
+            <th mat-header-cell *matHeaderCellDef> Action  </th>
+            <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" class="view-button" (click)="viewPatientInfo(element.position)">VIEW</button> </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons 
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+</div>

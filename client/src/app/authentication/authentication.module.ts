@@ -17,7 +17,7 @@ import { OtpVerificationDailogComponent } from './forgot-password/otp-verificati
     AppMaterialModule, 
     ReactiveFormsModule,
     FormsModule
-]
+  ]
 
 
 })

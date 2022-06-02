@@ -1,0 +1,22 @@
+<div class="home">
+    <mat-sidenav-container class="front-desk-container">
+        <mat-sidenav opened #sidenav mode="side" class="front-desk-menu">
+            <mat-nav-list>
+                <mat-list-item role="listitem">
+                    <mat-icon mat-list-icon class="">apartment</mat-icon>
+                    <span>FRONT DESK APP</span>
+                </mat-list-item>
+                <mat-selection-list #shoes [multiple]="false">
+                    <mat-list-option class="list-options" *ngFor="let value of navList" [value]="value">
+                      {{value}}
+                    </mat-list-option>
+                  </mat-selection-list>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content >
+            <div class="" style="height:88vh">
+                <app-dashboard></app-dashboard>
+            </div>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+</div>
