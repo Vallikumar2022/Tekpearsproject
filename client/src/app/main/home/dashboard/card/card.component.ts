@@ -48,7 +48,17 @@ export class CardComponent implements OnInit {
       icon:'fa fa-user-circle',
       icon2:'fa fa-hand-pointer-o'
 
+    },
+    {
+      title:'Registered Patients',
+      subTitle:'',
+      count:'',
+      isClickable:true,
+      icon:'fa fa-registered',
+      icon2:'fa fa-hand-pointer-o'
     }
+
+
       
   ]
   constructor(public rfDialog: MatDialog) { }
@@ -56,9 +66,9 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openRegistrationFormDialog(){
+  openRegistrationFormDialog(value){
     console.log('openRegistrationFormDialog func called');
-    this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'1000px', data: { name: '' },});
+    this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value },});
   }
 
 }

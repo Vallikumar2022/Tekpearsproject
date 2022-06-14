@@ -9,6 +9,8 @@ import { CardComponent } from './home/dashboard/card/card.component';
 import { PatientInfoDailogComponent } from './home/dashboard/patient-info-dailog/patient-info-dailog.component';
 import { PatientRegistrationFormComponent } from './home/dashboard/card/patient-registration-form/patient-registration-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrescriptionDialogComponent } from './home/dashboard/prescription-dialog/prescription-dialog.component';
+import { DeleteDialogComponent } from './home/dashboard/delete-dialog/delete-dialog.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     CardComponent,
     PatientInfoDailogComponent,
-    PatientRegistrationFormComponent
+    PatientRegistrationFormComponent,
+    PrescriptionDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,

@@ -1,40 +1,40 @@
 <div class="patient-registration-form">
-    <h1 mat-dialog-title class="prf-title  label-color">Patient Information</h1>
+    <h1 mat-dialog-title class="prf-title  label-color">{{editText}} Patient Information</h1>
 
-    <div class="form reg-container">
+    <div class="form reg-container" [formGroup]="patientRegistrationForm">
 
         <div class="">
             <label class="reg-label">Patient Name: </label>
-            <input class="user-id login-field reg-field" placeholder="Patient Name" matInput>
+            <input class="user-id login-field reg-field" formControlName="patientName" placeholder="Patient Name" matInput>
         </div>
         <div class="">
             <label class="reg-label">Email ID: </label>
-            <input class="user-id login-field reg-field" placeholder="Email Address" matInput>
+            <input class="user-id login-field reg-field" formControlName="emailId" placeholder="Email Address" matInput>
         </div>
 
         <div class="">
             <label class="reg-label">Phone Number: </label>
-            <input class="user-id login-field reg-field" placeholder="Phone Number" matInput>
+            <input class="user-id login-field reg-field" formControlName="phoneNumber" placeholder="Phone Number" matInput>
         </div>
 
         <div class="">
             <label class="reg-label">Age: </label>
-            <input class="user-id login-field reg-field"  placeholder="Age" matInput>
+            <input class="user-id login-field reg-field"  formControlName="age" placeholder="Age" matInput>
         </div>
 
         <div class="">
             <label class="reg-label">Sex: </label>
-            <input class="user-id login-field reg-field"  placeholder="Sex" matInput>
+            <input class="user-id login-field reg-field" formControlName="sex" placeholder="Sex" matInput>
         </div>
 
         <div class="">
             <label class="reg-label">Location: </label>
-            <input class="user-id login-field reg-field" placeholder="Location" matInput>
+            <input class="user-id login-field reg-field" formControlName="location" placeholder="Location" matInput>
         </div>
 
         <div class="">
-            <label class="reg-label">Speciality: </label>
-            <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Select Speciality" disableOptionCentering>
+            <label class="dd-label">Speciality: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" placeholder="Select Speciality" disableOptionCentering>
                 <mat-option *ngFor="let type of speciality" [value]="type.value">
                 {{type.viewValue}}
                 </mat-option>
@@ -42,8 +42,8 @@
         </div>
 
         <div class="">
-            <label class="reg-label">Consulted Doctor: </label>
-            <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Consulted Doctor" disableOptionCentering>
+            <label class="dd-label">Consulted Doctor: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" placeholder="Consulted Doctor" disableOptionCentering>
                 <mat-option *ngFor="let name of doctorsList" [value]="name.value">
                 {{name.viewValue}}
                 </mat-option>
@@ -51,8 +51,8 @@
         </div>
 
         <div class="">
-            <label class="reg-label">Type of Consultation: </label>
-            <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Type of Consultation" disableOptionCentering>
+            <label class="dd-label">Type of Consultation: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" placeholder="Type of Consultation" disableOptionCentering>
                 <mat-option *ngFor="let type of typeOfconsultation" [value]="type.value">
                 {{type.viewValue}}
                 </mat-option>
@@ -61,18 +61,27 @@
 
         <div class="">
             <label class="reg-label">Date of Consultation:</label>
-            <input class="user-id login-field reg-field"  placeholder="Date of Consultation" matInput>
+            <input class="user-id login-field reg-field"  formControlName="dateOfConsultation" placeholder="Date of Consultation" matInput>
         </div>
 
         <div class="">         
             <label class="reg-label">Purpose of Visit: </label>
-             <input class="user-id login-field reg-field" placeholder="Purpose of Visit" matInput>
+             <input class="user-id login-field reg-field" formControlName="purposeOfVisit" placeholder="Purpose of Visit" matInput>
         
         </div>
 
         <div class="">
             <label class="reg-label">Consultation Fee: </label>
             <input class="user-id login-field reg-field" value="1000" [disabled]="true" placeholder="Consultation Fee" matInput>
+        </div>
+
+        <div class="">
+            <label class="dd-label">Status: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" placeholder="Status" disableOptionCentering>
+                <mat-option *ngFor="let food of status" [value]="food.value">
+                {{food.viewValue}}
+                </mat-option>
+            </mat-select>
         </div>
 
 

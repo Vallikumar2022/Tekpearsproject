@@ -1,0 +1,12 @@
+
+<h1 mat-dialog-title class="delete-title  label-color">Delete Patient Information</h1>
+
+<div class="delete-text">
+    Are you sure want to Delete <span>{{patientName}}</span> with ID <span>{{patientId}}</span> ?
+</div>
+
+<div class="dDailogBtns">
+    <button mat-raised-button color="primary" class="db-button" (click)="delete(patientId)">YES</button>
+    <button mat-raised-button color="primary" class="db-button" mat-dialog-close>NO</button>
+
+</div>

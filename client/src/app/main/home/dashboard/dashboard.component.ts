@@ -2,7 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { PatientRegistrationFormComponent } from './card/patient-registration-form/patient-registration-form.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { PatientInfoDailogComponent } from './patient-info-dailog/patient-info-dailog.component';
+import { PrescriptionDialogComponent } from './prescription-dialog/prescription-dialog.component';
 
 
 interface Food {
@@ -20,6 +23,10 @@ export class DashboardComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   selectedValue: string;
+  selectedValue1: string;
+  selectedValue2: string;
+  selectedValue3: string;
+
   selectedCar: string;
 
   foods: Food[] = [
@@ -39,12 +46,13 @@ export class DashboardComponent implements OnInit {
   {value: 'Revisit', viewValue: 'Revisit'},
   {value: 'Close', viewValue: 'Close'}]
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor(public patientInfoDialog: MatDialog) { }
+  
+  constructor(public patientInfoDialog: MatDialog,
+    public patientEditFormDailog: MatDialog,
+    public deleteDialog: MatDialog) { }
 
   ngOnInit(): void {
   }
-
-  
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -59,8 +67,30 @@ export class DashboardComponent implements OnInit {
       }
     }
     this.patientInfoDialog.open(PatientInfoDailogComponent, {width:'700px',data: patientData});
+  }
 
+  viewDoctorsPrescription(pos){
+    this.patientEditFormDailog.open(PrescriptionDialogComponent, {width:'800px', height:'500px', data: { name: '' }})
+  }
 
+  viewEditForm(value, pos){
+    let patientData = {};
+    for(let i = 0;i<ELEMENT_DATA.length; i++){
+      if(ELEMENT_DATA[i].position === pos){
+        patientData = ELEMENT_DATA[i];
+      }
+    }
+    this.patientEditFormDailog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, patientInfo: patientData}})
+  }
+
+  deletePatientDetails(pos){
+    let patientData = {};
+    for(let i = 0;i<ELEMENT_DATA.length; i++){
+      if(ELEMENT_DATA[i].position === pos){
+        patientData = ELEMENT_DATA[i];
+      }
+    }
+    this.deleteDialog.open(DeleteDialogComponent, {width:'600px',height:'200px', data:{patientData}});
   }
 
   applyFilter(event) {
@@ -70,11 +100,10 @@ export class DashboardComponent implements OnInit {
       return
     }
     let value = event?.value
-    this.dataSource.filter = value.trim().toLowerCase();
-
-
-      
+    this.dataSource.filter = value.trim().toLowerCase();  
   }
+
+
 
 }
 

@@ -1,5 +1,6 @@
 .view-button{
     margin-bottom: 1em;
+    margin-right: 1em;
 }
 
 .speciality-dd {
@@ -41,15 +42,28 @@
         font-size: 16px;
         color: #FFF;
     }
-    .mat-table-sticky{
-        border-left: 1px solid #e0e0e0;
+    // .mat-table-sticky{
+    //     border-left: 1px solid #e0e0e0;
         
+    // }
+
+    .mat-column-position,
+    .mat-column-name,
+    .mat-column-pId,
+    .mat-column-pNumber,
+    .mat-column-speciality,
+    .mat-column-consultedDoctor,
+    .mat-column-typeOfConsultation,
+    .mat-column-dateOfAppointment,
+    .mat-column-status,
+    .mat-column-action{
+        border-right: 1px solid #e0e0e0;
     }
     th.mat-header-cell{
-        padding-left: 24px !important;
+        padding-left: 10px !important;
     }
     td.mat-cell{
-        padding-left: 24px !important;
+        padding-left: 10px !important;
 
     }
 }
@@ -68,4 +82,23 @@
     margin-bottom: 5px;
     font-size: 14px;
     margin-bottom: 1em;
+}
+
+.edit-icon-wrapper, .delete-icon-wrapper{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1em;
+    font-size: 22px;
+    cursor: pointer;
+    color: darkgrey;
+}
+
+.edit-icon-wrapper:hover, .delete-icon-wrapper:hover{
+    color: black;
+    // font-size: 24px;
+}
+
+.action-btns{
+    padding:0px !important  ;
+    text-align: center;
 }

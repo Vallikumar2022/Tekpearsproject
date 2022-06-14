@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -8,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./patient-registration-form.component.scss']
 })
 export class PatientRegistrationFormComponent implements OnInit {
+
 
   selectedValue = ''
   speciality = [
@@ -36,10 +38,46 @@ export class PatientRegistrationFormComponent implements OnInit {
     {value: 'Pradeep', viewValue: 'Pradeep'}
   ]
 
+  editText = '' ;
+
+  patientRegistrationForm: FormGroup;
+
+
   constructor(public dialogRef: MatDialogRef<PatientRegistrationFormComponent>,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.editText = this.data.isEdit ? 'Edit' : '';
+
+    this.patientRegistrationForm = this.formBuilder.group({
+      patientName:'',
+      emailId:'',
+      phoneNumber:'',
+      age:'',
+      sex:'',
+      location:'',
+      dateOfConsultation:'',
+      purposeOfVisit:'',
+    })
+
+    if(this.editText === 'Edit'){
+      this.updateForm(this.data.patientInfo)
+    }
+  }
+
+  updateForm(patientInfo){
+    console.log("patient info ---->", patientInfo);
+    this.patientRegistrationForm.patchValue({
+      patientName:patientInfo.name,
+      emailId:'',
+      phoneNumber:patientInfo.pNumber,
+      age:'',
+      sex:'Male',
+      location:'Hyderabad',
+      dateOfConsultation:'',
+      purposeOfVisit:'',
+    })
   }
 
   submitPatientDetails(){
