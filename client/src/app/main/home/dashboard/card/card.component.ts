@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PatientRegistrationFormComponent } from './patient-registration-form/patient-registration-form.component';
-
+import { ELEMENT_DATA } from '../dashboard.component';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -55,20 +55,26 @@ export class CardComponent implements OnInit {
       count:'',
       isClickable:true,
       icon:'fa fa-registered',
-      icon2:'fa fa-hand-pointer-o'
-    }
-
-
-      
+      icon2:'fa fa-mouse-pointer'
+    }   
   ]
   constructor(public rfDialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  openRegistrationFormDialog(value){
-    console.log('openRegistrationFormDialog func called');
-    this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value },});
+  openRegistrationFormDialog(value, event){
+
+    console.log('openRegistrationFormDialog func called', event);
+    if(!event.currentTarget.outerText.includes('New')){
+      let patientsList = [];
+      for(let i=0;i<ELEMENT_DATA.length;i++){
+        patientsList.push(ELEMENT_DATA[i].name);
+      }
+      this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, isNew:false, pl:patientsList }});
+      return
+    }
+    this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, isNew:true }});
   }
 
 }

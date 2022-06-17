@@ -1,8 +1,14 @@
-.view-button{
+.table-button{
     margin-bottom: 1em;
     margin-right: 1em;
 }
+.view-button{
+    margin-left: 1em;
+}
 
+// .op-button{
+//     margin-left: 1em;
+// }
 .speciality-dd {
     width: 13%;
     border: 1px solid grey;
@@ -92,6 +98,9 @@
     cursor: pointer;
     color: darkgrey;
 }
+.edit-icon-wrapper{
+    margin-left: 1em;
+}
 
 .edit-icon-wrapper:hover, .delete-icon-wrapper:hover{
     color: black;
@@ -100,5 +109,20 @@
 
 .action-btns{
     padding:0px !important  ;
-    text-align: center;
+    // text-align: center;
+}
+
+.info-circle {
+    font-size: 18px;
+    margin-left: 1em;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.cd-info-circle{
+    margin-right: 0.5em;
+}
+
+.info-circle:hover{
+    opacity: 1;
 }

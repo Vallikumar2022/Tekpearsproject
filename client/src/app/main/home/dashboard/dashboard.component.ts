@@ -6,6 +6,7 @@ import { PatientRegistrationFormComponent } from './card/patient-registration-fo
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { PatientInfoDailogComponent } from './patient-info-dailog/patient-info-dailog.component';
 import { PrescriptionDialogComponent } from './prescription-dialog/prescription-dialog.component';
+import { ViewPatientsHistoryDailogComponent } from './view-patients-history-dailog/view-patients-history-dailog.component';
 
 
 interface Food {
@@ -19,7 +20,7 @@ interface Food {
 })
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'pId', 'pNumber', 'speciality','consultedDoctor','typeOfConsultation',
-  'dateOfAppointment','status','action'];
+  'dateOfAppointment','status','action','Updation'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   selectedValue: string;
@@ -42,14 +43,14 @@ export class DashboardComponent implements OnInit {
     {value: 'Tele Consultation', viewValue: 'Tele Consultation'}
   ]
 
-  status = [{value: 'Open', viewValue: 'Open'},
+  statusList = [{value: 'Open', viewValue: 'Open'},
   {value: 'Revisit', viewValue: 'Revisit'},
   {value: 'Close', viewValue: 'Close'}]
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
-  constructor(public patientInfoDialog: MatDialog,
-    public patientEditFormDailog: MatDialog,
-    public deleteDialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -66,11 +67,11 @@ export class DashboardComponent implements OnInit {
         patientData = ELEMENT_DATA[i];
       }
     }
-    this.patientInfoDialog.open(PatientInfoDailogComponent, {width:'700px',data: patientData});
+    this.dialog.open(PatientInfoDailogComponent, {width:'700px',data: patientData});
   }
 
   viewDoctorsPrescription(pos){
-    this.patientEditFormDailog.open(PrescriptionDialogComponent, {width:'800px', height:'500px', data: { name: '' }})
+    this.dialog.open(PrescriptionDialogComponent, {width:'800px', height:'520px', data: { name: ''  }})
   }
 
   viewEditForm(value, pos){
@@ -80,7 +81,7 @@ export class DashboardComponent implements OnInit {
         patientData = ELEMENT_DATA[i];
       }
     }
-    this.patientEditFormDailog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, patientInfo: patientData}})
+    this.dialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, patientInfo: patientData}})
   }
 
   deletePatientDetails(pos){
@@ -90,7 +91,19 @@ export class DashboardComponent implements OnInit {
         patientData = ELEMENT_DATA[i];
       }
     }
-    this.deleteDialog.open(DeleteDialogComponent, {width:'600px',height:'200px', data:{patientData}});
+    this.dialog.open(DeleteDialogComponent, {width:'600px',height:'200px', data:{patientData}});
+  }
+
+  openPatientVisitHistory(patientInfo){
+    this.dialog.open(ViewPatientsHistoryDailogComponent, {width:'600px', data:{patientInfo, isPatientsHistory:true}})
+  }
+
+  openCDHistory(patientInfo){
+    this.dialog.open(ViewPatientsHistoryDailogComponent, {width:'600px', data:{patientInfo, isPatientsHistory:false}})
+  }
+
+  openOPForm(value, patientDetails){
+    this.dialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, patientInfo: patientDetails, isOP:true}})
   }
 
   applyFilter(event) {
@@ -102,9 +115,6 @@ export class DashboardComponent implements OnInit {
     let value = event?.value
     this.dataSource.filter = value.trim().toLowerCase();  
   }
-
-
-
 }
 
 
@@ -122,7 +132,7 @@ export interface PeriodicElement {
 }
 
 
-const ELEMENT_DATA: PeriodicElement[] = [
+export const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Kiran', pId: 10020, pNumber:'5566889900', speciality:'Cardiology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Online', dateOfAppointment:'13-JUNE-2022', status:'Open', action:'view'},
   {position: 2, name: 'Abhishek', pId: 10021, pNumber:'2244667788', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
@@ -131,23 +141,23 @@ const ELEMENT_DATA: PeriodicElement[] = [
   typeOfConsultation:'Offline', dateOfAppointment:'13-JUNE-2022', status:'Revisit', action:'view'},
   {position: 4, name: 'Sanmitha', pId: 10023, pNumber:'7799880000', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Online', dateOfAppointment:'13-JUNE-2022', status:'Open', action:'view'},
-  {position: 5, name: 'Tele Consultation', pId: 10024, pNumber:'7766557788', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
+  {position: 5, name: 'Tom', pId: 10024, pNumber:'7766557788', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view'},
   {position: 6, name: 'Arjun Singh palai', pId: 1.0079, pNumber:'4466556677', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Open', action:'view'},
-  {position: 7, name: 'Kiran', pId: 1.0079, pNumber:'88999776655', speciality:'Cardiology',consultedDoctor:'Ram Murthy Rao', 
+  {position: 7, name: 'John', pId: 1.0079, pNumber:'88999776655', speciality:'Cardiology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view'},
-  {position: 8, name: 'Kiran', pId: 1.0079, pNumber:'55666443355', speciality:'Neurology',consultedDoctor:'Ram Murthy Rao', 
+  {position: 8, name: 'Sam', pId: 1.0079, pNumber:'55666443355', speciality:'Neurology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Open', action:'view' },
   {position: 9, name: 'Harish', pId: 1.0079, pNumber:'8899007766', speciality:'Gynacology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Open', action:'view'},
   {position: 10, name: 'Shyam', pId: 1.0079, pNumber:'4466557766', speciality:'Neurology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Online', dateOfAppointment:'13-JUNE-2022', status:'Revisit', action:'view'},
-  {position: 11, name: 'Kiran', pId: 1.0079, pNumber:'4455336655', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
+  {position: 11, name: 'Marius', pId: 1.0079, pNumber:'4455336655', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Online', dateOfAppointment:'13-JUNE-2022', status:'Revisit', action:'view'},
   {position: 12, name: 'Bhuvan', pId: 1.0079, pNumber:'1133224455', speciality:'Gynacology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Offline', dateOfAppointment:'13-JUNE-2022', status:'Open', action:'view'},
-  {position: 13, name: 'Kiran', pId: 1.0079, pNumber:'9963661535', speciality:'Neurology',consultedDoctor:'Ram Murthy Rao', 
+  {position: 13, name: 'Steve', pId: 1.0079, pNumber:'9963661535', speciality:'Neurology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Offline', dateOfAppointment:'13-JUNE-2022', status:'Revisit', action:'view'},
   {position: 14, name: 'Praveen', pId: 1.0079, pNumber:'9963661535', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view' },
@@ -159,11 +169,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view'},
   {position: 18, name: 'Pramod', pId: 1.0079, pNumber:'9963661535', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view'},
-  {position: 19, name: 'Kiran', pId: 1.0079, pNumber:'9963661535', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
+  {position: 19, name: 'Peter', pId: 1.0079, pNumber:'9963661535', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Online', dateOfAppointment:'13-JUNE-2022', status:'Revisit', action:'view'},
-  {position: 20, name: 'Kiran', pId: 1.0079, pNumber:'554433433', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
+  {position: 20, name: 'Devin', pId: 1.0079, pNumber:'554433433', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view' },
-  {position: 21, name: 'Kiran', pId: 1.0079, pNumber:'2244335566', speciality:'Cardiology',consultedDoctor:'Ram Murthy Rao', 
+  {position: 21, name: 'Shilpa', pId: 1.0079, pNumber:'2244335566', speciality:'Cardiology',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view'},
   {position: 22, name: 'Giri', pId: 1.0079, pNumber:'2211334433', speciality:'ENT',consultedDoctor:'Ram Murthy Rao', 
   typeOfConsultation:'Tele Consultation', dateOfAppointment:'13-JUNE-2022', status:'Closed', action:'view'},

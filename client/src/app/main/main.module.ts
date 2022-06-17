@@ -11,6 +11,7 @@ import { PatientRegistrationFormComponent } from './home/dashboard/card/patient-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrescriptionDialogComponent } from './home/dashboard/prescription-dialog/prescription-dialog.component';
 import { DeleteDialogComponent } from './home/dashboard/delete-dialog/delete-dialog.component';
+import { ViewPatientsHistoryDailogComponent } from './home/dashboard/view-patients-history-dailog/view-patients-history-dailog.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DeleteDialogComponent } from './home/dashboard/delete-dialog/delete-dia
     PatientInfoDailogComponent,
     PatientRegistrationFormComponent,
     PrescriptionDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    ViewPatientsHistoryDailogComponent
   ],
   imports: [
     CommonModule,
