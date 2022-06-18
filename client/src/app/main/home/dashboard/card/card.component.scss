@@ -1,0 +1,31 @@
+.cards-list{
+    display: inline-block;
+    margin: 2em 0em 1em 1em;
+    min-width: 225px;
+}
+
+.not-clickable {
+    pointer-events: none;
+}
+
+.clickable{
+    cursor: pointer;
+    height: 167px;
+}
+
+.card-icon{
+    text-align: center;
+    display: block;
+    margin-bottom: 0.5em;
+    font-size: 40px;
+}
+
+.card-icon-new{
+    text-align: center;
+    display: block;
+    font-size: 30px;
+}
+
+.cl-container{
+    text-align: center;
+}

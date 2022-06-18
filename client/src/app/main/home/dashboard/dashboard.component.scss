@@ -1,0 +1,148 @@
+.table-button{
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+.view-button{
+    margin-left: 1em;
+}
+
+.speciality-dd {
+    width: 13%;
+    border: 1px solid grey;
+    margin-bottom: 1em;
+    border-radius: 2em;
+    padding: 7px 12px 7px 7px;
+    margin-right: 2em;
+}
+
+.table-filter  {
+    text-align: end;
+    margin: 0em 2em 0em 1em;
+}
+
+::ng-deep {
+    .mat-select-value{
+        text-align: initial;
+    }
+    .mat-select-placeholder{
+        font-size: 14px;
+    }
+
+    .mat-select-panel{
+        margin-top: 2.1em !important;
+        min-width: calc(100% + 10px) !important;
+        margin-left: 1em;
+        font-size: 14px !important;
+    }
+    .mat-select-value-text {
+        font-size: 14px;
+    }
+    .mat-header-row{
+        background: #388ce2;
+    }
+    th.mat-header-cell{
+        font-size: 16px;
+        color: #FFF;
+    }
+
+    .mat-column-position,
+    .mat-column-name,
+    .mat-column-pId,
+    .mat-column-pNumber,
+    .mat-column-speciality,
+    .mat-column-consultedDoctor,
+    .mat-column-typeOfConsultation,
+    .mat-column-dateOfAppointment,
+    .mat-column-status,
+    .mat-column-action{
+        border-right: 1px solid #e0e0e0;
+    }
+    th.mat-header-cell{
+        padding-left: 10px !important;
+    }
+    td.mat-cell{
+        padding-left: 10px !important;
+
+    }
+}
+
+.table-filter-label{
+    margin-right: 0.5em;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.table-search{
+    width: 15em;
+    border: 1px solid grey;
+    border-radius: 25px;
+    padding: 9px 14px 10px 12px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    margin-bottom: 1em;
+}
+
+.edit-icon-wrapper, .delete-icon-wrapper{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1em;
+    font-size: 22px;
+    cursor: pointer;
+    color: darkgrey;
+}
+.edit-icon-wrapper{
+    margin-left: 1em;
+}
+
+.edit-icon-wrapper:hover, .delete-icon-wrapper:hover{
+    color: black;
+    // font-size: 24px;
+}
+
+.action-btns{
+    padding:0px !important  ;
+}
+
+.info-circle {
+    font-size: 18px;
+    margin-left: 1em;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.cd-info-circle{
+    margin-right: 0.5em;
+}
+
+.info-circle:hover{
+    opacity: 1;
+}
+
+.table-responsive {
+    display: block;
+    // width: 100%;
+    overflow-x: auto;
+    .mat-table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        display: table;
+        border-collapse: collapse;
+        margin: 0px;
+    }
+    .mat-row,
+    .mat-header-row {
+        display: table-row;
+    }
+    .mat-cell,
+    .mat-header-cell {
+        word-wrap: initial;
+        display: table-cell;
+        padding: 0px 5px;
+        line-break: unset;
+        width: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+  }

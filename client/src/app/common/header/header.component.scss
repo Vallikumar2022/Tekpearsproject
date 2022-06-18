@@ -1,0 +1,19 @@
+.header {
+    background: rgb(31, 92, 153);
+    background: linear-gradient(
+      90deg,
+      rgba(31, 92, 153, 1) 0%,
+      rgba(56, 140, 226, 1) 26%,
+      rgba(56, 140, 226, 1) 76%,
+      rgba(31, 92, 153, 1) 100%
+    );
+    width: 100%;
+    height: 56px;
+    top: 0;
+    position: fixed;
+    padding: 13px;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 3px;
+    z-index: 999;
+  }

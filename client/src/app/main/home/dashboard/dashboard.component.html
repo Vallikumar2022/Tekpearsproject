@@ -1,0 +1,114 @@
+<div class="dashboard-container">
+    <app-card></app-card>
+
+    <div class="table-filter">
+      <label class="table-filter-label">Speciality: </label>
+      <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Select Speciality" disableOptionCentering (selectionChange)="applyFilter($event)">
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select>
+
+      <label class="table-filter-label">Type of Consultation: </label>
+      <mat-select [(ngModel)]="selectedValue1" name="food" class="speciality-dd" placeholder="Type of Consultation" disableOptionCentering (selectionChange)="applyFilter($event)">
+        <mat-option *ngFor="let type of typeOfconsultation" [value]="type.value">
+          {{type.viewValue}}
+        </mat-option>
+      </mat-select>
+
+      <label class="table-filter-label">Status: </label>
+      <mat-select [(ngModel)]="selectedValue2" name="status" class="speciality-dd" placeholder="Status" disableOptionCentering (selectionChange)="applyFilter($event)">
+        <mat-option *ngFor="let status of statusList" [value]="status.value">
+          {{status.viewValue}}
+        </mat-option>
+      </mat-select>
+
+      <label class="table-filter-label">Search: </label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" class="table-search" #input>
+    </div>
+    
+    <!-- Table data  -->
+
+    <div class="mat-elevation-z8 patients-list table-responsive">
+        <table mat-table [dataSource]="dataSource">
+      
+          <ng-container matColumnDef="position" >
+            <th mat-header-cell *matHeaderCellDef> Sl. No </th>
+            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          </ng-container>
+          <!-- Position Column -->
+          <ng-container matColumnDef="name" >
+            <th mat-header-cell *matHeaderCellDef> Patient Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="pId" >
+            <th mat-header-cell *matHeaderCellDef> Patient ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.pId}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="pNumber" >
+            <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+            <td mat-cell *matCellDef="let element"> {{element.pNumber}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="speciality" >
+            <th mat-header-cell *matHeaderCellDef> Speciality </th>
+            <td mat-cell *matCellDef="let element"> {{element.speciality}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="consultedDoctor" >
+            <th mat-header-cell *matHeaderCellDef> Consulted Doctor </th>
+            <td mat-cell *matCellDef="let element"> {{element.consultedDoctor}}  <i class="fa fa-info-circle cd-info-circle info-circle" (click)="openCDHistory(element)" matTooltip="Consulted Doctor" matTooltipPosition="above"></i></td>
+            
+          </ng-container>
+
+          <ng-container matColumnDef="typeOfConsultation" >
+            <th mat-header-cell *matHeaderCellDef> Type of Consultation  </th>
+            <td mat-cell *matCellDef="let element"> {{element.typeOfConsultation}} </td>
+          </ng-container>
+          <ng-container matColumnDef="dateOfAppointment" >
+            <th mat-header-cell *matHeaderCellDef> Date of Consultation  </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateOfAppointment}}<i class="fa fa-info-circle info-circle" (click)="openPatientVisitHistory(element)" matTooltip="History" matTooltipPosition="above"></i> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status" >
+            <th mat-header-cell *matHeaderCellDef> Status  </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action  </th>
+            <td mat-cell *matCellDef="let element" class="action-btns"> 
+              <button mat-raised-button color="primary" class="table-button view-button" (click)="viewPatientInfo(element.position)">Veiw</button>
+              <button mat-raised-button color="primary" class="table-button" (click)="viewDoctorsPrescription(element.position)">Prescription</button>
+              <button mat-raised-button color="primary" *ngIf="element.status ==='Revisit' || element.status ==='Closed'" class="table-button op-button" (click)="openOPForm(true, element)">Book a OP</button>
+               
+              <!-- <button mat-raised-button color="primary" class="view-button" (click)="viewPatientInfo(element.position)">Delete</button>  -->
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Updation">
+            <th mat-header-cell *matHeaderCellDef> Edit / Delete  </th>
+            <td mat-cell *matCellDef="let element" class="action-btns">
+          <div class="edit-icon-wrapper" matTooltip="Edit" matTooltipPosition="above">
+            <i class="fa fa-edit edit-icon" (click)="viewEditForm(true, element.position)"></i>
+          </div>
+          <div class="delete-icon-wrapper" style="margin-right:0em !important" matTooltip="Delete" matTooltipPosition="above">
+            <i class="fa fa-trash delete-icon" (click)="deletePatientDetails(element.position)"></i>
+          </div>  
+        </td>
+        </ng-container> 
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons 
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+</div>

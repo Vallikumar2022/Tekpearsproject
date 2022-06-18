@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.label-color{
+      color: #1f5c99;
+  }
+
+table {
+  width: 100%;
+}
+
+mat-card-subtitle.mat-card-subtitle {
+  text-align: center;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+mat-card.mat-card.mat-focus-indicator.cards-list.ng-star-inserted {
+  background: rgba(56, 140, 226, 1);
+  color: #FFF;
+}
+
+// for mat-side bar container 
+mat-sidenav.mat-drawer.mat-sidenav.front-desk-menu.ng-tns-c99-1.ng-trigger.ng-trigger-transform.mat-drawer-side.mat-drawer-opened.ng-star-inserted {
+  background: rgba(56, 140, 226, 1) 76%;
+}
+
+.mat-elevation-z8.patients-list {
+  margin: 0em 2em 2em 1em;
+}
+
+// for side bar heading 
+mat-list-item.mat-list-item.mat-focus-indicator.mat-list-item-avatar.mat-list-item-with-avatar {
+  color: #FFF;
+}
+
+// for side bar options 
+mat-list-option.mat-list-item.mat-list-option.mat-focus-indicator.list-options.mat-accent.ng-star-inserted {
+  color: #FFFF;
+}
+
+// card title font-size 
+.mat-card-title{
+  font-size: 20px;
+  text-align: center;
+}
+
+
+// common styles for all buttons and input field 
+.mat-raised-button.mat-primary{
+  background-color: #388ce2;
+  margin-top: 1em;
+  line-height: 36px;
+  border-radius: 25px;
+  color: #FFF !important;
+
+}
+input:focus-visible{
+  outline: none;
+}
+input {
+  text-align: initial !important;
+}

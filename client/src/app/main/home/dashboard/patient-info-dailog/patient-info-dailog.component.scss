@@ -1,0 +1,35 @@
+.pI-title{
+    font-size: 26px;
+    text-align: center;
+}
+
+.p-name{
+    text-align: center;
+    
+}
+
+.p-label{
+    min-width: 12em;
+    text-align: end;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-left: 2em;
+}
+
+.p-info{
+    min-width: 15em;
+    display: inline-block;
+    margin-left: 2em;
+    text-align: initial;
+}
+
+.close-dialog{
+    text-align: center;
+    color: #FFF;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}

@@ -1,0 +1,113 @@
+<div class="patient-registration-form">
+    <h1 mat-dialog-title class="prf-title  label-color" *ngIf="(isNewPatientRegistration || editText) && !isOP">{{editText}} Patient Information</h1>
+<!-- isNewPatientRegistration -->
+    <h1 mat-dialog-title class="prf-title  label-color" *ngIf="(!isNewPatientRegistration && !editText) || isOP">OP for Registered Patients</h1>
+    <div class="patients-list-dd" *ngIf="!isNewPatientRegistration && !editText && !isOP">
+        <label class="reg-label">List of Out Patients: </label>
+        <mat-select  name="patients-list" class="speciality-dd regFromDD" placeholder="Select Patient" disableOptionCentering (selectionChange)="onPatientSelection($event)">
+            <mat-option *ngFor="let type of patientsList" [value]="type">
+            {{type}}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="form reg-container" [formGroup]="patientRegistrationForm">
+
+        <div class="">
+            <label class="reg-label">Patient Name: </label>
+            <input class="user-id login-field reg-field" formControlName="patientName"  [ngClass]="isOP ? 'disable-field' : ''" placeholder="Patient Name" matInput>
+        </div>
+        <div class="">
+            <label class="reg-label">Email ID: </label>
+            <input class="user-id login-field reg-field" formControlName="emailId" [ngClass]="isOP ? 'disable-field' : ''" placeholder="Email Address" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Phone Number: </label>
+            <input class="user-id login-field reg-field" formControlName="phoneNumber" [ngClass]="isOP ? 'disable-field' : ''" placeholder="Phone Number" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Age: </label>
+            <input class="user-id login-field reg-field"  formControlName="age" [ngClass]="isOP ? 'disable-field' : ''" placeholder="Age" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Sex: </label>
+            <input class="user-id login-field reg-field" formControlName="sex" [ngClass]="isOP ? 'disable-field' : ''" placeholder="Sex" matInput>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Location: </label>
+            <input class="user-id login-field reg-field" formControlName="location" [ngClass]="isOP ? 'disable-field' : ''" placeholder="Location" matInput>
+        </div>
+
+        <div class="">
+            <label class="dd-label">Speciality: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" formContolName="speciality" [ngClass]="isOP ? 'disable-field' : ''" placeholder="Select Speciality" disableOptionCentering>
+                <mat-option *ngFor="let type of speciality" [value]="type.value">
+                {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="">
+            <label class="dd-label" >Consulted Doctor: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" placeholder="Consulted Doctor" disableOptionCentering>
+                <mat-option *ngFor="let name of doctorsList" [value]="name.value">
+                {{name.viewValue}}
+                </mat-option>
+            </mat-select>
+            <!-- <i class="fa fa-info-circle visited-doctors-info" *ngIf="isOP" (click)="openHistory()" matTooltip="Consulted Doctors" matTooltipPosition="above"></i> -->
+        </div>
+
+        <div class="">
+            <label class="dd-label">Type of Consultation: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" placeholder="Type of Consultation" disableOptionCentering>
+                <mat-option *ngFor="let type of typeOfconsultation" [value]="type.value">
+                {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="">
+            <label class="reg-label">Date of Consultation:</label>
+            <input class="user-id login-field reg-field"  formControlName="dateOfConsultation" placeholder="Date of Consultation" matInput>
+        </div>
+
+        <div class="">         
+            <label class="reg-label">Purpose of Visit: </label>
+             <input class="user-id login-field reg-field" formControlName="purposeOfVisit" placeholder="Purpose of Visit" matInput>
+        
+        </div>
+
+        <div class="" *ngIf="isOP">
+            <label class="dd-label">OP Validity: </label>
+            <mat-select  name="food" [formControl]="opValidityValue" class="speciality-dd regFromDD" placeholder="OP Validity" disableOptionCentering>
+                <mat-option *ngFor="let type of opValidityDD" [value]="type.value">
+                {{type.viewValue}}
+                </mat-option>
+            </mat-select>
+            
+        </div>
+
+        <div class="">
+            <label class="reg-label">Consultation Fee: </label>
+            <input class="user-id login-field reg-field" value="1000" [disabled]="true" placeholder="Consultation Fee" matInput>
+        </div>
+
+        <div class="">
+            <label class="dd-label">Status: </label>
+            <mat-select  name="food" class="speciality-dd regFromDD" placeholder="Status" disableOptionCentering>
+                <mat-option *ngFor="let food of status" [value]="food.value">
+                {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </div>
+
+    <div class="loginButton">
+        <button mat-raised-button color="primary" class="reg-patient-btn" (click)="submitPatientDetails()">Submit</button>
+    </div>
+            
+
+    </div>
+</div>

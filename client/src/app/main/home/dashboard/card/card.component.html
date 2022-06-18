@@ -1,0 +1,8 @@
+<div class="cl-container col-12 col-xl-12 col-lg-12 col-md-12 col-sm-10">
+  <mat-card class="cards-list" *ngFor="let card of cardsList" (click)="openRegistrationFormDialog(false, $event)" [ngClass]="card.isClickable === true ? 'clickable' : 'not-clickable'">
+    <i [ngClass]="card.icon" class="card-icon"></i>  
+    <mat-card-title>{{card.title}}</mat-card-title>
+    <mat-card-subtitle>{{card.count}}</mat-card-subtitle>
+    <i *ngIf="card.isClickable === true" [ngClass]="card.icon2" class="card-icon-new"></i>  
+  </mat-card>
+</div>
