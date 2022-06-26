@@ -2,7 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ELEMENT_DATA } from '../../dashboard.component';
+import { map, Observable, startWith } from 'rxjs';
+import { PatientRegistrationService } from 'src/app/services/MainModuleServices/patient-registration-service';
+import { ELEMENT_DATA, PeriodicElement } from '../../dashboard.component';
 import { ViewPatientsHistoryDailogComponent } from '../../view-patients-history-dailog/view-patients-history-dailog.component';
 
 @Component({
@@ -50,9 +52,19 @@ export class PatientRegistrationFormComponent implements OnInit {
   isNewPatientRegistration;
   isOP = false;
 
+  myControl = new FormControl('');
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
+
   constructor(public dialogRef: MatDialogRef<PatientRegistrationFormComponent>,
     private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data,
-    private formBuilder: FormBuilder, public dialog: MatDialog) { }
+    private formBuilder: FormBuilder, public dialog: MatDialog,
+    private patientRegistrationService:PatientRegistrationService) { }
+
+    private _filter(value: string): string[] {
+      const filterValue = value.toLowerCase();
+      return this.patientsList.filter(option => option?.toLowerCase().includes(filterValue));
+    }
 
   ngOnInit(): void {
     this.editText = this.data.isEdit ? 'Edit' : '';
@@ -76,6 +88,12 @@ export class PatientRegistrationFormComponent implements OnInit {
     if(this.editText === 'Edit'){
       this.updateForm(this.data.patientInfo)
     }
+
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+
   }
 
   openHistory(){
@@ -83,14 +101,19 @@ export class PatientRegistrationFormComponent implements OnInit {
     this.dialog.open(ViewPatientsHistoryDailogComponent,{width:'600px', data: { isPatientsHistory: false, patientInfo:this.data.patientInfo }});
   }
   onPatientSelection(event){
-    console.log("patient name ---->>>",event.value);
+    console.log("patient name ---->>>",event.option.value);
+    if(event.option.value)
     for(let i = 0; i<ELEMENT_DATA.length;i++){
-      if(ELEMENT_DATA[i].name === event.value){
+      if(ELEMENT_DATA[i].name === event.option.value){
         this.updateForm(ELEMENT_DATA[i])
       }
 
     }
+    return event.value;
   }
+  // displayFn(user: User): string {
+  //   return user && user.name ? user.name : '';
+  // }
 
   updateForm(patientInfo){
     console.log("patient info ---->", patientInfo);
@@ -109,11 +132,41 @@ export class PatientRegistrationFormComponent implements OnInit {
     this.patientRegistrationForm.get('speciality').setValue(patientInfo.speciality);
   }
 
+  pObje:PeriodicElement;
   submitPatientDetails(){
-    this.dialogRef.close();
-      this._snackBar.open('Patient Details has been Registered ', 'Undo',{
-        duration:3000
-      })
+    // this.patientRegistrationForm = this.formBuilder.group({
+    //   patientName:[{value:'', disabled:this.isOP}],
+    //   emailId:[{value:'', disabled:this.isOP}],
+    //   phoneNumber:[{value:'', disabled:this.isOP}],
+    //   age:[{value:'', disabled:this.isOP}],
+    //   sex:[{value:'', disabled:this.isOP}],
+    //   location:[{value:'', disabled:this.isOP}],
+    //   dateOfConsultation:'',
+    //   purposeOfVisit:'',
+    //   speciality:[{value:'', disabled:this.isOP}]
+    // })
+
+     this.pObje = {position: 1, 
+      name: this.patientRegistrationForm.get('patientName').value, 
+      pId: 1, 
+      pNumber:this.patientRegistrationForm.get('phoneNumber').value, 
+      speciality:'Cardiology',
+      consultedDoctor:'Ram Murthy Rao', 
+      typeOfConsultation:'Online', 
+      dateOfAppointment:'13-Jun-2022', 
+      status:'Open', 
+      action:'view'
+    }
+    // ELEMENT_DATA.push(this.pObje);
+    console.log("patient registration --->", this.pObje);
+    this.patientRegistrationService.setNewPatientDetails(this.pObje);
+    this.dialogRef.close(this.pObje);
+    // {position: 1, name: 'Kiran', pId: 10020, pNumber:'5566889900', speciality:'Cardiology',consultedDoctor:'Ram Murthy Rao', 
+    // typeOfConsultation:'Online', dateOfAppointment:'13-Jun-2022', status:'Open', action:'view'}
+
+    this._snackBar.open('Patient Details has been Registered ', 'Undo',{
+      duration:3000
+    })
   }
 
 }

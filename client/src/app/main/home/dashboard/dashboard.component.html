@@ -3,21 +3,21 @@
 
     <div class="table-filter">
       <label class="table-filter-label">Speciality: </label>
-      <mat-select [(ngModel)]="selectedValue" name="food" class="speciality-dd" placeholder="Select Speciality" disableOptionCentering (selectionChange)="applyFilter($event)">
+      <mat-select [(ngModel)]="selectedSpeciality" name="food" class="speciality-dd" placeholder="Select Speciality" disableOptionCentering (selectionChange)="applyFilter($event)">
         <mat-option *ngFor="let food of foods" [value]="food.value">
           {{food.viewValue}}
         </mat-option>
       </mat-select>
 
       <label class="table-filter-label">Type of Consultation: </label>
-      <mat-select [(ngModel)]="selectedValue1" name="food" class="speciality-dd" placeholder="Type of Consultation" disableOptionCentering (selectionChange)="applyFilter($event)">
+      <mat-select [(ngModel)]="selectedConsultation" name="food" class="speciality-dd" placeholder="Type of Consultation" disableOptionCentering (selectionChange)="applyFilter($event)">
         <mat-option *ngFor="let type of typeOfconsultation" [value]="type.value">
           {{type.viewValue}}
         </mat-option>
       </mat-select>
 
       <label class="table-filter-label">Status: </label>
-      <mat-select [(ngModel)]="selectedValue2" name="status" class="speciality-dd" placeholder="Status" disableOptionCentering (selectionChange)="applyFilter($event)">
+      <mat-select [(ngModel)]="selectedStatus" name="status" class="speciality-dd" placeholder="Status" disableOptionCentering (selectionChange)="applyFilter($event)">
         <mat-option *ngFor="let status of statusList" [value]="status.value">
           {{status.viewValue}}
         </mat-option>
@@ -87,7 +87,7 @@
               <button mat-raised-button color="primary" class="table-button" (click)="viewDoctorsPrescription(element.position)">Prescription</button>
               <button mat-raised-button color="primary" *ngIf="element.status ==='Revisit' || element.status ==='Closed'" class="table-button op-button" (click)="openOPForm(true, element)">Book a OP</button>
                
-              <!-- <button mat-raised-button color="primary" class="view-button" (click)="viewPatientInfo(element.position)">Delete</button>  -->
+        
             </td>
           </ng-container>
           <ng-container matColumnDef="Updation">

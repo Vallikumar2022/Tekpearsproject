@@ -11,6 +11,7 @@ import { SharedModule } from './common/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MainModule } from './main/main.module';
+import { PatientRegistrationService } from './services/MainModuleServices/patient-registration-service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { MainModule } from './main/main.module';
     FormsModule,
     MainModule
   ],
-  providers: [],
+  providers: [PatientRegistrationService],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

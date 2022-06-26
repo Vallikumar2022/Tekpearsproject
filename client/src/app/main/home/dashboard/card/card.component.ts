@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PatientRegistrationFormComponent } from './patient-registration-form/patient-registration-form.component';
 import { ELEMENT_DATA } from '../dashboard.component';
@@ -9,6 +9,7 @@ import { ELEMENT_DATA } from '../dashboard.component';
 })
 export class CardComponent implements OnInit {
 
+  @Input() patientInfo;
   cardsList = [
     {
       title:'Total Patients',
@@ -63,18 +64,30 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  patientObj = {};
   openRegistrationFormDialog(value, event){
 
     console.log('openRegistrationFormDialog func called', event);
+
+    // Added condition to check if it is a patient registration form or not 
     if(!event.currentTarget.outerText.includes('New')){
       let patientsList = [];
       for(let i=0;i<ELEMENT_DATA.length;i++){
         patientsList.push(ELEMENT_DATA[i].name);
       }
-      this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, isNew:false, pl:patientsList }});
+      this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'800px', data: { isEdit: value, isNew:false, pl:patientsList }});
       return
     }
-    this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'970px', data: { isEdit: value, isNew:true }});
+    // Opens the Patients registration form 
+    const dialogRef = this.rfDialog.open(PatientRegistrationFormComponent, {width:'800px', height:'800px', data: { isEdit: value, isNew:true }});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.patientObj = result;
+      console.log("regestered patient info ---->",this.patientObj);
+      this.patientInfo = this.patientObj;
+
+    });
   }
 
 }

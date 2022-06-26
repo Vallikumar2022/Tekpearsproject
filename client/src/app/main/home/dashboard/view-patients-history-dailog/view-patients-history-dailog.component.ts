@@ -11,9 +11,9 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', dateOfConsultation:'13/JUNE/2022'},
-  {position: 2, name: 'Helium', dateOfConsultation:'18/JUNE/2022'},
-  {position: 3, name: 'Lithium', dateOfConsultation:'21/JUNE/2022'},
+  {position: 1, name: 'Hydrogen', dateOfConsultation:'13-Jun-2022'},
+  {position: 2, name: 'Helium', dateOfConsultation:'18-Jun-2022'},
+  {position: 3, name: 'Lithium', dateOfConsultation:'21-Jun-2022'},
   // {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
   // {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
   // {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},

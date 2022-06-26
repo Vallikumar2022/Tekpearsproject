@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   showFiller = false;
-  dashboard = 'DASHBOARD'
-  navList = ['DASHBOARD']
+  dashboard = 'DASHBOARD';
+  navList = ['DASHBOARD', 'NOTES'];
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   constructor() { }
 
