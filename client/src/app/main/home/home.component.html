@@ -7,15 +7,16 @@
                     <span>FRONT DESK APP</span>
                 </mat-list-item>
                 <mat-selection-list #shoes [multiple]="false">
-                    <mat-list-option class="list-options" *ngFor="let value of navList" [value]="value">
-                      {{value}}
+                    <mat-list-option class="list-options" [routerLink]="data.route" *ngFor="let data of uNavList" [value]="data.name">
+                      {{data.name}}
                     </mat-list-option>
                   </mat-selection-list>
             </mat-nav-list>
         </mat-sidenav>
-        <mat-sidenav-content >
+        <mat-sidenav-content class="module-content">
             <div class="" style="height:88vh">
-                <app-dashboard></app-dashboard>
+                <!-- <app-dashboard></app-dashboard> -->
+                <router-outlet></router-outlet>
             </div>
         </mat-sidenav-content>
       </mat-sidenav-container>

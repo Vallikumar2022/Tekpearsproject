@@ -10,6 +10,17 @@ export class HomeComponent implements OnInit {
   showFiller = false;
   dashboard = 'DASHBOARD';
   navList = ['DASHBOARD', 'NOTES'];
+  uNavList = [
+    {
+      name:'DASHBOARD',
+      route:'/dashboard'
+    },
+    {
+      name:'NOTES',
+      route:'/notes'
+    }
+]
+
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   constructor() { }
 

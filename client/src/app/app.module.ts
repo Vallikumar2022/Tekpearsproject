@@ -10,8 +10,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './common/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MainModule } from './main/main.module';
 import { PatientRegistrationService } from './services/MainModuleServices/patient-registration-service';
+import { HomeModule } from './main/home/home.module';
+// import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { PatientRegistrationService } from './services/MainModuleServices/patien
     AuthenticationModule,
     SharedModule,
     FormsModule,
-    MainModule
+    // MainModule,
+    HomeModule,
+    // EditorModule
   ],
   providers: [PatientRegistrationService],
   bootstrap: [AppComponent],
