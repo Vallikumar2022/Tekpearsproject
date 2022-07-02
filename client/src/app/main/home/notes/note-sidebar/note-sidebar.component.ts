@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from 'express';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-note-sidebar',
