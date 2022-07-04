@@ -11,6 +11,7 @@ import { PrescriptionDialogComponent } from "./dashboard/prescription-dialog/pre
 import { ViewPatientsHistoryDailogComponent } from "./dashboard/view-patients-history-dailog/view-patients-history-dailog.component";
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
+import { NotesModule } from "./notes/notes.module";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HomeComponent } from "./home.component";
     HomeRoutingModule,
     AppMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotesModule
   ]
 })
 export class HomeModule { }

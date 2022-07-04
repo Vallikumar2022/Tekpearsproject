@@ -9,9 +9,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {path:'home', loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule) },
-  {path:'home/dashboard', loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)},
+  // {path:'home/dashboard', loadChildren: () => import('./main/home/home.module').then(m => m.HomeModule)},
 
-  { path: 'home/notes', loadChildren: () => import('./main/home/notes/notes.module').then(m => m.NotesModule) }
+  // { path: 'home/notes', loadChildren: () => import('./main/home/notes/notes.module').then(m => m.NotesModule) },
+  // { path: 'home/notes/:id', loadChildren: () => import('./main/home/notes/notes.module').then(m => m.NotesModule) }
 ];
 
 @NgModule({

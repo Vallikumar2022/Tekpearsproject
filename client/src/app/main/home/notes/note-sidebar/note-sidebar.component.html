@@ -1,14 +1,19 @@
-
-<div class="note-sidebar-container">
-    <div class="note-heading row" *ngFor="let note of notesList">
-        <mat-card class="col-2 nCard">{{note.noteName}}</mat-card>
-        <div class="editor-container col-8">
-            <app-notes-editor></app-notes-editor>
-            <!-- <router-outlet></router-outlet> -->
+<div class="row">
+    <div class="note-sidebar-container col-2 ">
+        <div class="note-heading row" *ngFor="let note of notesList; let i=index">
+            <mat-card class="nCard" (click)="notesClick(i)" >{{note.noteName}}</mat-card>
+            
         </div>
+        <!-- [routerLink]="[i]" -->
+        
     </div>
     
+    <div class="editor-container col-8">
+        <!-- <app-notes-editor></app-notes-editor> -->
+        <router-outlet></router-outlet>
+    </div>
 </div>
+
 
 <!-- <div class="editor-container col-10">
     <app-notes-editor></app-notes-editor>

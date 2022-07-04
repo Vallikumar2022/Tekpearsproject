@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { PatientRegistrationService } from './services/MainModuleServices/patient-registration-service';
 import { HomeModule } from './main/home/home.module';
 // import { EditorModule } from '@tinymce/tinymce-angular';
+// import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HomeModule } from './main/home/home.module';
     FormsModule,
     // MainModule,
     HomeModule,
+    // NgxEditorModule
     // EditorModule
   ],
   providers: [PatientRegistrationService],

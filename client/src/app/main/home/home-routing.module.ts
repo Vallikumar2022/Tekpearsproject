@@ -7,8 +7,10 @@ import { NotesComponent } from "./notes/notes.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent, 
-  children:[{path:'dashboard', component:DashboardComponent},
-  {path:'notes',component:NotesComponent}]},
+  children:[
+    {path:'dashboard', component:DashboardComponent},
+    {path:'notes',loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule)}
+]},
   
 ];
 
